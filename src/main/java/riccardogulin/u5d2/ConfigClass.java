@@ -1,10 +1,13 @@
 package riccardogulin.u5d2;
 
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import riccardogulin.u5d2.entities.BackendStudent;
 import riccardogulin.u5d2.entities.FrontendStudent;
 import riccardogulin.u5d2.entities.FullstackStudent;
+
+import java.util.Locale;
 
 @Configuration // Annotazione OBBLIGATORIA se vogliamo che questa classe venga presa in considerazione all'avvio dell'applicazione
 @PropertySource("application.properties") // Annotazione fondamentale se vogliamo leggere i valori
@@ -27,6 +30,7 @@ public class ConfigClass {
 	}
 
 	@Bean
+	@Primary
 	public String getName() {
 		return "Ajeje";
 	}
@@ -65,5 +69,10 @@ public class ConfigClass {
 	@Bean
 	public String getPGUsername(@Value("${pg.username}") String pgUsername) {
 		return pgUsername;
+	}
+
+	@Bean
+	public Faker getFaker() {
+		return new Faker(Locale.ITALY);
 	}
 }
