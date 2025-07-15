@@ -2,7 +2,9 @@ package riccardogulin.u5d2;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import riccardogulin.u5d2.entities.*;
+import riccardogulin.u5d2.entities.BackendStudent;
+import riccardogulin.u5d2.entities.FrontendStudent;
+import riccardogulin.u5d2.entities.FullstackStudent;
 
 @Configuration // Annotazione OBBLIGATORIA se vogliamo che questa classe venga presa in considerazione all'avvio dell'applicazione
 @PropertySource("application.properties") // Annotazione fondamentale se vogliamo leggere i valori
@@ -52,10 +54,11 @@ public class ConfigClass {
 		return new FrontendStudent(name, "Poretti");
 	}
 
-	@Bean
+
+	/*@Bean
 	public Interviewer getInterviewer(Student fullstackStudent) {
 		return new Interviewer(fullstackStudent);
-	}
+	}*/
 
 	// Siccome nel main non posso accedere direttamente alle variabili d'ambiente tramite @Value, allora un possibile
 	// escamotage è quello di crearsi un Bean apposito che "esporti" tale valore
